@@ -8,10 +8,10 @@ namespace LinkedList
 {
     public class Node
     {
-        public object Data { get; set; }
+        public int Data { get; set; }
         public Node Next { get; set; }
 
-        public Node(object data, Node next)
+        public Node(int data, Node next)
         {
             Data = data;
             Next = next;

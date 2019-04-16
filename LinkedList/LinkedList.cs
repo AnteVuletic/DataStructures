@@ -27,25 +27,36 @@ namespace LinkedList
                 current = current.Next;
             return current;
         }
-        public object Add(int index, object o)
+
+        private Node _nodeByObject(int data)
+        {
+            var current = Head;
+            while (current.Next != null)
+            {
+                if(current.Data == data) return current;
+                current = current.Next;
+            }
+            return null;
+        }
+        public object Add(int index, int data)
         {
             if (index < 0)
                 throw new ArgumentOutOfRangeException(nameof(index));
             if (index > Count)
                 index = Count;
-            if (Empty) Head = new Node(o, Head);
+            if (Empty) Head = new Node(data, Head);
             else
             {
                 var current = _goToIndex(index);
 
-                current.Next = new Node(o,current.Next);
+                current.Next = new Node(data,null);
             }
             Count++;
-            return o;
+            return data;
         }
-        public object Push(object o)
+        public object Push(int data)
         {
-            return Add(Count, o);
+            return Add(Count, data);
         }
 
         public object Remove(int index)
@@ -79,11 +90,34 @@ namespace LinkedList
             return Remove(Count - 1);
         }
 
+       
         public void Clear()
         {
             Head = null;
+            Count = 0;
         }
 
+        public void Swap(int firstNumber, int secondNumber)
+        {
+            var firstNode = _nodeByObject(firstNumber);
+            var secondNode = _nodeByObject(secondNumber);
+            firstNode.Data = secondNumber;
+            secondNode.Data = firstNumber;
+        }
+
+        public void BubbleSort()
+        {
+            for (var i = 0; i < Count; i++)
+            {
+                for (var k = 0; k < Count-i; k++)
+                {
+                    var firstNode = _goToIndex(k-1);
+                    var secondNode = _goToIndex(k);
+                    if( firstNode.Data > secondNode.Data )
+                        Swap(firstNode.Data, secondNode.Data);
+                }
+            }
+        }
         public static Node LogAll(Node headNode)
         {
             Console.WriteLine(headNode.Data);
