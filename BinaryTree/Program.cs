@@ -10,6 +10,14 @@ namespace BinaryTree
     {
         public static void Main(string[] args)
         {
+            var binaryTree = new BinaryTree();
+            BinaryTree.Add(5, binaryTree.Head);
+            BinaryTree.Add(4, binaryTree.Head);
+            BinaryTree.Add(3, binaryTree.Head);
+            BinaryTree.Add(6, binaryTree.Head);
+            BinaryTree.Add(9, binaryTree.Head);
+            BinaryTree.Add(1, binaryTree.Head);
+            BinaryTree.LogAll(binaryTree.Head);
         }
     }
 }

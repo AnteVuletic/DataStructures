@@ -18,5 +18,12 @@ namespace BinaryTree
             Left = null;
             Right = null;
         }
+
+        public Node()
+        {
+            Value = 0;
+            Left = null;
+            Right = null;
+        }
     }
 }
